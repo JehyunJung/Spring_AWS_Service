@@ -1,4 +1,4 @@
-package web_service.springawsserver.web;
+package web_service.springawsserver.web.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
