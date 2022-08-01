@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web_service.springawsserver.domain.entity.Posts;
 import web_service.springawsserver.domain.repository.PostsRepository;
+import web_service.springawsserver.web.dto.PostsResponseDto;
 import web_service.springawsserver.web.dto.PostsSaveRequestDto;
+import web_service.springawsserver.web.dto.PostsUpdateRequestDto;
 
 @RequiredArgsConstructor
 @Service
