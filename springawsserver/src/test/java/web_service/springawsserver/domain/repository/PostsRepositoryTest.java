@@ -1,10 +1,11 @@
-package web_service.springawsserver.domain.posts;
+package web_service.springawsserver.domain.repository;
 
-import org.aspectj.lang.annotation.After;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import web_service.springawsserver.domain.entity.Posts;
+import web_service.springawsserver.domain.repository.PostsRepository;
 
 import java.util.List;
 

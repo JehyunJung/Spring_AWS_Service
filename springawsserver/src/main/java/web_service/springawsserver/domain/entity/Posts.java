@@ -1,4 +1,4 @@
-package web_service.springawsserver.domain.posts;
+package web_service.springawsserver.domain.entity;
 
 import lombok.Builder;
 import lombok.Getter;
