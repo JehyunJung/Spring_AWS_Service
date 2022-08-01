@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import web_service.springawsserver.domain.repository.PostsRepository;
+import web_service.springawsserver.web.dto.PostsSaveRequestDto;
 
 @RequiredArgsConstructor
 @Service
@@ -12,7 +13,7 @@ public class PostsService {
 
     @Transactional
     public Long save(PostsSaveRequestDto requestDto) {
-        return postsRepository.save(requestDto.toEntity()).getId();
+         return postsRepository.save(requestDto.toEntity()).getId();
     }
 
 }

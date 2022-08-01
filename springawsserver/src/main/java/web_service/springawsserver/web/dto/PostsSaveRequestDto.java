@@ -3,7 +3,7 @@ package web_service.springawsserver.web.dto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import web_service.springawsserver.domain.posts.Posts;
+import web_service.springawsserver.domain.entity.Posts;
 
 @Getter
 @NoArgsConstructor
