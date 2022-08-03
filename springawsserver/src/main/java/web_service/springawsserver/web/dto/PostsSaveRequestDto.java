@@ -1,11 +1,12 @@
 package web_service.springawsserver.web.dto;
 
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import web_service.springawsserver.domain.entity.Posts;
 
-@Getter
+@Data
 @NoArgsConstructor
 public class PostsSaveRequestDto {
     private String title;
