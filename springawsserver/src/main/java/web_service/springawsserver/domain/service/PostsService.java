@@ -24,11 +24,11 @@ public class PostsService {
     }
 
     @Transactional
-    public Long update(Long id, PostsUpdateRequestDto updateRequestDto) {
+    public PostsResponseDto update(Long id, PostsUpdateRequestDto updateRequestDto) {
         Posts post = postsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 존재하지 않습니다. id=" + id));
         post.update(updateRequestDto.getTitle(), updateRequestDto.getContent());
-        return id;
+        return new PostsResponseDto(post);
     }
 
     @Transactional
@@ -46,5 +46,10 @@ public class PostsService {
                     return new PostsListResponseDto(post.getId(),post.getTitle(),post.getAuthor(),post.getContent(),post.getModifiedDate());
                 })
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void delete(Long id) {
+        postsRepository.deleteById(id);
     }
 }
