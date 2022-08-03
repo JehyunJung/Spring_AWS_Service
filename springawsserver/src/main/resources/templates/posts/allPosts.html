@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/header :: header}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6">
+          <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+        </div>
+      </div>
+    </div>
+
+    <div>
+        <table class="table table-horizontal table-bordered">
+            <thead class="thead-strong">
+            <tr>
+                <th>게시글 번호</th>
+                <th>게시글 제목</th>
+                <th>작성자</th>
+                <th>내용</th>
+                <th>최종 수정일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post : ${posts}">
+                <td><a href="post.html" th:href="@{/posts/{postId} (postId=${post.id})}" th:text="${post.id}">게시글 id</a></td>
+                <td><a href="post.html" th:href="@{|/posts/${post.id}|}" th:text="${post.title}">게시글 제목</a></td>
+                <td th:text="${post.author}">게시글 등록자</td>
+                <td th:text="${post.content}">게시글 내용</td>
+                <td th:text="${post.modifiedTime}">최종 수정일</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<footer th:insert="~{fragments/footer :: footer}"></footer>
+</html>
