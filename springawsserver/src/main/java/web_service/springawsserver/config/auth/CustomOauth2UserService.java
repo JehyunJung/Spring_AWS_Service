@@ -10,9 +10,9 @@ import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import web_service.springawsserver.config.auth.dto.OAuthAttributes;
-import web_service.springawsserver.config.auth.dto.SessionUser;
-import web_service.springawsserver.domain.entity.User;
-import web_service.springawsserver.domain.repository.UserRepository;
+import web_service.springawsserver.config.auth.dto.SessionMember;
+import web_service.springawsserver.domain.entity.Member;
+import web_service.springawsserver.domain.repository.MemberRepository;
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
 
@@ -20,7 +20,7 @@ import java.util.Collections;
 @Service
 public class CustomOauth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
-    private final UserRepository userRepository;
+    private final MemberRepository memberRepository;
     private final HttpSession httpSession;
 
     @Override
@@ -34,21 +34,21 @@ public class CustomOauth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes()); //Oauth2User의 attributes을 담을 클래스
 
-        User user = saveOrUpdate(attributes);
-        httpSession.setAttribute("user", new SessionUser(user));    //세션에 저장할 사용자 정보를 위한 Dto
+        Member member = saveOrUpdate(attributes);
+        httpSession.setAttribute("member", new SessionMember(member));    //세션에 저장할 사용자 정보를 위한 Dto
 
         return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
+                Collections.singleton(new SimpleGrantedAuthority(member.getRoleKey())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey());
     }
 
 
-    private User saveOrUpdate(OAuthAttributes attributes) {
-        User user = userRepository.findByEmail(attributes.getEmail())
-                .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))     //이름과 사진이 변경되면 User Entity에 반영한다.
+    private Member saveOrUpdate(OAuthAttributes attributes) {
+        Member member = memberRepository.findByEmail(attributes.getEmail())
+                .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))     //이름과 사진이 변경되면 Member Entity에 반영한다.
                 .orElse(attributes.toEntity());
 
-        return userRepository.save(user);
+        return memberRepository.save(member);
     }
 }

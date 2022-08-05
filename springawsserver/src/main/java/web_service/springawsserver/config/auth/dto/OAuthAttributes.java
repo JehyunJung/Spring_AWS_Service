@@ -3,7 +3,7 @@ package web_service.springawsserver.config.auth.dto;
 import lombok.Builder;
 import lombok.Getter;
 import web_service.springawsserver.domain.entity.Role;
-import web_service.springawsserver.domain.entity.User;
+import web_service.springawsserver.domain.entity.Member;
 
 import java.util.Map;
 
@@ -38,8 +38,8 @@ public class OAuthAttributes {
                 .build();
     }
 
-    public User toEntity(){
-        return User.builder()
+    public Member toEntity(){
+        return Member.builder()
                 .name(name)
                 .email(email)
                 .picture(picture)
