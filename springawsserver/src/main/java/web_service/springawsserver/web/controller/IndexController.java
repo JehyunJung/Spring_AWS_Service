@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import web_service.springawsserver.config.auth.LoginMember;
 import web_service.springawsserver.config.auth.dto.SessionMember;
 import web_service.springawsserver.domain.entity.Posts;
 import web_service.springawsserver.domain.service.PostsService;
@@ -28,10 +29,9 @@ public class IndexController {
 
     //처음 화면 출력
     @GetMapping("/")
-    public String index(Model model) {
-        SessionMember member = (SessionMember) httpSession.getAttribute("member");
+    public String index(Model model, @LoginMember SessionMember member) {
         if (member != null) {
-            model.addAttribute("userName", member.getName());
+            model.addAttribute("memberName", member.getName());
         }
 
         return "index";

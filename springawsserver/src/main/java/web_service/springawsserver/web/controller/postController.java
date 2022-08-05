@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import web_service.springawsserver.config.auth.LoginMember;
+import web_service.springawsserver.config.auth.dto.SessionMember;
 import web_service.springawsserver.domain.service.PostsService;
 import web_service.springawsserver.web.dto.PostsListResponseDto;
 import web_service.springawsserver.web.dto.PostsResponseDto;
@@ -22,9 +24,10 @@ public class postController {
 
     //처음 화면 출력
     @GetMapping("")
-    public String allPosts(Model model) {
+    public String allPosts(Model model, @LoginMember SessionMember member) {
         List<PostsListResponseDto> posts = postsService.findAll();
         model.addAttribute("posts", posts);
+        model.addAttribute("memberName", member.getName());
         return "posts/allPosts";
     }
 
