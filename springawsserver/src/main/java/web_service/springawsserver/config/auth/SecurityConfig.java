@@ -20,7 +20,7 @@ public class SecurityConfig {
                 .headers().frameOptions().disable() //h2 화면을 사용하기 위해 disable 처리
                 .and()
                     .authorizeRequests() //URL 별 권한 설정
-                    .antMatchers("/","/posts/","/css/**","/images/**","/js/**","/h2-console/**").permitAll() //permitAll의 경우 전체 열람권한 설정
+                    .antMatchers("/","/posts/","/css/**","/images/**","/js/**","/h2-console/**","/hello/**").permitAll() //permitAll의 경우 전체 열람권한 설정
                     .antMatchers("/api/v1/**","/posts/*").hasRole(Role.USER.name()) //hasRole을 통해 해당 role을 가진 user만 열람 가능하도록 설정
                     .anyRequest().authenticated() //그 외 나머지 url은 인증된 사용자에게만 허용
                 .and()
