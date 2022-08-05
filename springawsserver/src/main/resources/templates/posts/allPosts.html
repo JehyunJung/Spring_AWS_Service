@@ -8,7 +8,16 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-6">
-          <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+
+            <th:block th:if="${member}">
+                <span id="user" th:text="|Welcome, ${member.name}|"></span>
+                <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+            </th:block>
+            <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
+            <th:block th:unless="${member}">
+                <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+            </th:block>
         </div>
       </div>
     </div>

@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import web_service.springawsserver.config.auth.LoginMember;
+import web_service.springawsserver.config.auth.dto.SessionMember;
 import web_service.springawsserver.domain.entity.Posts;
 import web_service.springawsserver.domain.service.PostsService;
 import web_service.springawsserver.web.dto.PostsListResponseDto;
 import web_service.springawsserver.web.dto.PostsSaveRequestDto;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -22,10 +25,12 @@ import java.util.List;
 
 public class IndexController {
     private final PostsService postsService;
+    private final HttpSession httpSession;
 
     //처음 화면 출력
     @GetMapping("/")
-    public String index() {
+    public String index(Model model, @LoginMember SessionMember member) {
+        model.addAttribute("member", member);
         return "index";
     }
 }
