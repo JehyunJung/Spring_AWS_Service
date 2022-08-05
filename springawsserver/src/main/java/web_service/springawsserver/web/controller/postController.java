@@ -14,6 +14,7 @@ import web_service.springawsserver.web.dto.PostsSaveRequestDto;
 import web_service.springawsserver.web.dto.PostsUpdateRequestDto;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,7 +28,7 @@ public class postController {
     public String allPosts(Model model, @LoginMember SessionMember member) {
         List<PostsListResponseDto> posts = postsService.findAll();
         model.addAttribute("posts", posts);
-        model.addAttribute("memberName", member.getName());
+        model.addAttribute("member", member);
         return "posts/allPosts";
     }
 

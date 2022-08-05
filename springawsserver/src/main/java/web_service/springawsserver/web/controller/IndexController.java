@@ -30,10 +30,7 @@ public class IndexController {
     //처음 화면 출력
     @GetMapping("/")
     public String index(Model model, @LoginMember SessionMember member) {
-        if (member != null) {
-            model.addAttribute("memberName", member.getName());
-        }
-
+        model.addAttribute("member", member);
         return "index";
     }
 }
