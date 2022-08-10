@@ -5,10 +5,12 @@ PROJECT_NAME=springawsserver
 
 cd $REPOSITORY/$PROJECT_NAME/
 
+: <<'END'
 echo "> Git Pull"
 
 git checkout dev
 git pull
+END
 
 echo "> 프로젝트 빌드 시작"
 
@@ -52,6 +54,6 @@ nohup java -jar $JAR_NAME 2>&1 &
 
 
 nohup java -jar \
-    -Dspring.config.location=classpath:/application.properties,classpath:/application-real.properties,/home/ec2-user/app/application-oauth.properties,/home/ec2-user/app/application-real-db.properties \
+    -Dspring.config.location=classpath:/application-real.properties,/home/ec2-user/app/application-oauth.properties,/home/ec2-user/app/application-real-db.properties \
     -Dspring.profiles.active=real \
     $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
