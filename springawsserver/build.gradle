@@ -13,28 +13,19 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.projectlombok:lombok')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-mustache')
+    compile('com.h2database:h2')
 
-	//lombok
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
+    compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+    compile('org.springframework.session:spring-session-jdbc')
 
-	//h2
-	runtimeOnly 'com.h2database:h2'
+    compile("org.mariadb.jdbc:mariadb-java-client")
 
-	//jpa
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
-	//spring_security
-	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-	testImplementation 'org.springframework.security:spring-security-test'
-	//session-Store
-	implementation 'org.springframework.session:spring-session-jdbc'
-
-	//maria-db
-	implementation 'org.mariadb.jdbc:mariadb-java-client'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile("org.springframework.security:spring-security-test")
 
 	
 }
