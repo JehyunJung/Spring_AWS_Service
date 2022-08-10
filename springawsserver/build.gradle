@@ -33,6 +33,9 @@ dependencies {
 	//session-Store
 	implementation 'org.springframework.session:spring-session-jdbc'
 
+	//maria-db
+	implementation 'org.mariadb.jdbc:mariadb-java-client'
+
 	
 }
 
