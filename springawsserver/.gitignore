@@ -36,5 +36,9 @@ out/
 ### VS Code ###
 .vscode/
 
-### VS Code ###
+### oauth security ###
 application-oauth.properties
+
+### deploy ###
+nohup.out
+*.jar
