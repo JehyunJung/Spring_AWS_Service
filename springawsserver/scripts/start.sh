@@ -19,7 +19,7 @@ chmod +x $JAR_FILE
 nohup java -jar \
     -Dspring.config.location=classpath:/application-real.properties,/home/ec2-user/app/application-oauth.properties,/home/ec2-user/app/application-real-db.properties \
     -Dspring.profiles.active=real \
-    $JAR_NAME > $APP_LOG 2>$ERROR_LOG &
+    $JAR_FILE > $APP_LOG 2>$ERROR_LOG 
 
-CURRENT_PID=$(pgrep -f JAR_FILE)
+CURRENT_PID=$(pgrep -f $JAR_FILE)
 echo "$TIMENOW > 실행된 프로세스 ID: $CURRENT_PID" >> $DEPLOY_LOG
