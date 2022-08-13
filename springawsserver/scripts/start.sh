@@ -12,7 +12,7 @@ TIME_NOW=$(date +%c)
 
 echo "$TIME_NOW > Build 파일 복사" >> $DEPLOY_LOG
 
-cp $REPOSITORY/zip/build/libs/*.jar $JAR_FILE
+cp $REPOSITORY/build/libs/*.jar $JAR_FILE
 
 echo "$TIME_NOW > 새 어플리케이션 실행: $JAR_FILE" >> $DEPLOY_LOG
 chmod +x $JAR_FILE
